@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_API_URL, YOUTUBE_VIDEOS_API } from "../../constants/Constant";
 import TagList from "./TagList";
 import VideoDetailCard from "./VideoDetailCard";
+import { useVideos } from "../../hooks/useVideos";
 
 const Category = [
   {
@@ -55,18 +56,7 @@ const Category = [
 ];
 
 function VideoContainer() {
-  const [youtubeData, setYouTubeData] = useState([]);
-
-  useEffect(() => {
-    getYoutubeVideos();
-  }, []);
-
-  const getYoutubeVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
-    const json = await data.json();
-    setYouTubeData(json.items);
-  };
-
+  const YT_VIDEOS = useVideos();
   return (
     <div className="w-full md:w-10/12">
       <div className="flex flex-col">
@@ -77,7 +67,7 @@ function VideoContainer() {
         </div>
 
         <div className="flex  flex-wrap gap-x-4">
-          {youtubeData?.map((data) => {
+          {YT_VIDEOS?.map((data) => {
             return <VideoDetailCard key={data.id} data={data} />;
           })}
         </div>

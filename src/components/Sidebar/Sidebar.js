@@ -72,7 +72,7 @@ const SideBarElements = {
 function Sidebar() {
   const toggleState = useSelector((state) => state.toggle.isSidebarOpen);
 
-  //Early return patter
+  //Early return pattern
   if (!toggleState) return null;
 
   return (
