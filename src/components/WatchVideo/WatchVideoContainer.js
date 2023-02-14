@@ -20,7 +20,7 @@ function WatchVideoContainer() {
   return (
     <>
       <div className="flex w-full">
-        <div className="p-5 w-[60%] overflow-hidden flex flex-col">
+        <div className="p-5 w-[65%] overflow-hidden flex flex-col">
           <iframe
             width="100%"
             height="515"
@@ -35,7 +35,7 @@ function WatchVideoContainer() {
             <p className="text-xl font-bold">{details.details.snippet.title}</p>
           </div>
         </div>
-        <div className="p-5 w-[40%]">
+        <div className="p-5 w-[35%]">
           {YT_VIDEOS?.map((data) => {
             return <RelatedVideoCard key={data.id} videos={data} />;
           })}
