@@ -7,7 +7,7 @@ export const Body = () => {
   return (
     <div>
       <Header />
-      <div className="flex flex-wrap  pt-[90px]">
+      <div className="flex flex-row h-[calc(100%-56px)] ">
         <Sidebar />
         <Outlet />
         {/* <VideoContainer /> */}

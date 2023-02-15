@@ -58,9 +58,10 @@ const Category = [
 function VideoContainer() {
   const YT_VIDEOS = useVideos();
   return (
-    <div className="w-full md:w-10/12">
-      <div className="flex flex-col">
-        <div className="flex flex-wrap">
+    // <div className="w-full md:w-10/12">
+    <div className="grow w-[calc(100%-240px)] h-full overflow-y-auto">
+      <div className="flex flex-col relative">
+        <div className="flex flex-wrap ">
           {Category.map((cat) => {
             return <TagList key={cat.id} name={cat.name} />;
           })}

@@ -3,23 +3,26 @@ import HumburgerMenu from "../../assets/menu.png";
 import { TbSearch } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { setToggleSidebar } from "../../utils/sidebarSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../../constants/Constant";
 
 function Header() {
+  const [showSuggestionbar, setShowSuggestionBar] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [suggestionData, setSuggestionData] = useState([]);
 
   useEffect(() => {
     dispatch(setToggleSidebar());
   }, []);
 
+  //Debouncing technique used in this useEffect for retreivg OnChange suggestions
   useEffect(() => {
     //call search API after 200ms
     const timer = setTimeout(() => {
       getYoutubeSuggestion();
-    }, 4000);
+    }, 200);
 
     //  This method is user for
     // if  onChange event called before the given setTime out time then it will destroy the ongoing/current componnet.
@@ -31,7 +34,7 @@ function Header() {
   const getYoutubeSuggestion = async () => {
     const suggestion = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await suggestion.json();
-
+    setSuggestionData(json[1]);
     console.log(json);
   };
 
@@ -44,7 +47,7 @@ function Header() {
   };
 
   return (
-    <div className="grid grid-flow-col fixed w-full bg-white p-4 shadow-lg ">
+    <div className="grid grid-flow-col sticky top-0 z-20 w-full bg-white p-4 shadow-lg ">
       <div className=" flex  col-span-2">
         <div className="w-10 h-6 mr-4" onClick={handleSidebar}>
           <img
@@ -63,16 +66,40 @@ function Header() {
         </div>
       </div>
 
-      <div className="flex col-span-8 justify-center items-center">
+      <div className="flex col-span-8 justify-center items-center relative">
         <input
           placeholder="Search"
           value={searchQuery}
           onChange={handleSearchChange}
+          onBlur={() => setShowSuggestionBar(false)}
+          onFocus={() => setShowSuggestionBar(true)}
           className="border border-grey-400 w-1/2 p-2 rounded-l-full outline-none px-4"
         />
         <button className="border border-grey-400 px-5 py-2 rounded-r-full bg-gray-100">
           <TbSearch size={25} className="text-gray-400" />
         </button>
+
+        <div className="absolute w-full flex justify-center items-center  top-11">
+          {showSuggestionbar ? (
+            <div className="w-[55%]  bg-white border shadow-lg rounded-xl ">
+              {/* <ul> */}
+              {suggestionData?.map((item, ind) => {
+                return (
+                  // <div className="flex justify-center items-center w-full border border-t-4">
+
+                  <p
+                    key={ind}
+                    className="hover:bg-gray-200 p-2 cursor-pointer flex"
+                  >
+                    {item}
+                  </p>
+                  // </div>
+                );
+              })}
+              {/* </ul> */}
+            </div>
+          ) : null}
+        </div>
       </div>
 
       <div className="flex col-span-2"></div>

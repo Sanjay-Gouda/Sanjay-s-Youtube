@@ -73,11 +73,18 @@ function Sidebar() {
   const toggleState = useSelector((state) => state.toggle.isSidebarOpen);
 
   //Early return pattern
-  if (!toggleState) return null;
+  // if (!toggleState) return null;
 
   return (
     <>
-      <div className="w-full md:w-2/12 shadow-lg h-screen overflow-hidden">
+      {/* <div className="w-full md:w-2/12 shadow-lg h-screen overflow-hidden"> */}
+      <div
+        className={`overflow-y-auto h-full py-4 bg-white absolute md:relative z-10  md:translate-x-0 transition-all ${
+          !toggleState
+            ? "md:block w-[50px] hidden"
+            : "md:block w-[240px] translate-x-[0px]"
+        }`}
+      >
         <div className="flex flex-col px-2">
           <div className="flex flex-col   border-b-2 justify-start items-start">
             {SideBarElements?.top?.map((el) => {
@@ -85,6 +92,20 @@ function Sidebar() {
                 <div
                   key={el.id}
                   className="py-2 flex justify-start items-start rounded-lg cursor-pointer w-full hover:bg-gray-200"
+                >
+                  <div className="mr-2 mx-3">{el.icon}</div>
+                  <div>{el.label}</div>
+                </div>
+              );
+            })}
+          </div>
+          {/* Expore */}
+          <div className="flex flex-col  border-b-2 justify-start items-start">
+            {SideBarElements?.explore?.map((el) => {
+              return (
+                <div
+                  key={el.id}
+                  className="py-2 flex justify-start rounded-lg items-start cursor-pointer w-full hover:bg-gray-200"
                 >
                   <div className="mr-2 mx-3">{el.icon}</div>
                   <div>{el.label}</div>
