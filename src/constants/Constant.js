@@ -12,3 +12,144 @@ export const YOUTUBE_VIDEOS_API =
 
 export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const COMMENTS_DATA = [
+  {
+    name: "Hindi Romantic Songs",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
+  {
+    name: "Hindi Romantic Songs",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [],
+      },
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [
+          {
+            name: "Hindi Romantic Songs",
+            text: "Lorem ipsum dolor sit amet, consectetur adip",
+            replies: [
+              {
+                name: "Hindi Romantic Songs",
+                text: "Lorem ipsum dolor sit amet, consectetur adip",
+                replies: [
+                  {
+                    name: "Hindi Romantic Songs",
+                    text: "Lorem ipsum dolor sit amet, consectetur adip",
+                    replies: [
+                      {
+                        name: "Hindi Romantic Songs",
+                        text: "Lorem ipsum dolor sit amet, consectetur adip",
+                        replies: [],
+                      },
+                    ],
+                  },
+                  {
+                    name: "Hindi Romantic Songs",
+                    text: "Lorem ipsum dolor sit amet, consectetur adip",
+                    replies: [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Hindi Romantic Songs",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [
+          {
+            name: "Hindi Romantic Songs",
+            text: "Lorem ipsum dolor sit amet, consectetur adip",
+            replies: [
+              {
+                name: "Hindi Romantic Songs",
+                text: "Lorem ipsum dolor sit amet, consectetur adip",
+                replies: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [],
+      },
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [],
+      },
+    ],
+  },
+  {
+    name: "Hindi Romantic Songs",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [],
+      },
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [
+          {
+            name: "Hindi Romantic Songs",
+            text: "Lorem ipsum dolor sit amet, consectetur adip",
+            replies: [
+              {
+                name: "Hindi Romantic Songs",
+                text: "Lorem ipsum dolor sit amet, consectetur adip",
+                replies: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Hindi Romantic Songs",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [],
+      },
+      {
+        name: "Hindi Romantic Songs",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [
+          {
+            name: "Hindi Romantic Songs",
+            text: "Lorem ipsum dolor sit amet, consectetur adip",
+            replies: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Hindi Romantic Songs",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
+];

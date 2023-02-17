@@ -10,7 +10,6 @@ export const Body = () => {
       <div className="flex flex-row h-[calc(100%-56px)] ">
         <Sidebar />
         <Outlet />
-        {/* <VideoContainer /> */}
       </div>
     </div>
   );

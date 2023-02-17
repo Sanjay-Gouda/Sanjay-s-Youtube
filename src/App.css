@@ -3,6 +3,22 @@
 } */
 
 
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.video-card{
+  height: 100vh;
+  overflow-y:scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  
+  
+  
+  
+}
+.video-card::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}

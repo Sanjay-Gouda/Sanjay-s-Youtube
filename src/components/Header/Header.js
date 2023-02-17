@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import HumburgerMenu from "../../assets/menu.png";
 import { TbSearch } from "react-icons/tb";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setToggleSidebar } from "../../utils/sidebarSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../../constants/Constant";
+import { setSearchCache } from "../../utils/searchSlice";
 
 function Header() {
   const [showSuggestionbar, setShowSuggestionBar] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const searchCache = useSelector((state) => state.cache.suggestionList);
+
   const [suggestionData, setSuggestionData] = useState([]);
 
   useEffect(() => {
@@ -21,7 +24,13 @@ function Header() {
   useEffect(() => {
     //call search API after 200ms
     const timer = setTimeout(() => {
-      getYoutubeSuggestion();
+      // seachKeywod : ["suggestion data1","suggestion data2","suggestion data2"...]
+      //for this syntax is :
+      if (searchCache[searchQuery]) {
+        setSuggestionData(searchCache[searchQuery]);
+      } else {
+        getYoutubeSuggestion();
+      }
     }, 200);
 
     //  This method is user for
@@ -32,10 +41,12 @@ function Header() {
   }, [searchQuery]);
 
   const getYoutubeSuggestion = async () => {
+    console.log("API CALL : ", searchQuery);
     const suggestion = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await suggestion.json();
     setSuggestionData(json[1]);
-    console.log(json);
+
+    dispatch(setSearchCache({ [searchQuery]: json[1] }));
   };
 
   const handleSidebar = () => {
@@ -49,7 +60,10 @@ function Header() {
   return (
     <div className="grid grid-flow-col sticky top-0 z-20 w-full bg-white p-4 shadow-lg ">
       <div className=" flex  col-span-2">
-        <div className="w-10 h-6 mr-4" onClick={handleSidebar}>
+        <div
+          className="w-10 h-6 mr-4 hover:bg-gray-200 rounded-full"
+          onClick={handleSidebar}
+        >
           <img
             alt="menu"
             src={HumburgerMenu}

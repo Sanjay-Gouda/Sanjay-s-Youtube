@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { useVideos } from "../../hooks/useVideos";
 import { closeSidebar } from "../../utils/sidebarSlice";
+import CommentContainer from "../Comments/commentList";
 import RelatedVideoCard from "./RelatedVideoCard";
+import { comments } from "../../constants/Constant";
+import { TitleContainer } from "../../TitleContainer/titleContainer";
 
 function WatchVideoContainer() {
   const dispatch = useDispatch();
@@ -31,11 +34,11 @@ function WatchVideoContainer() {
             allowfullscreen
           ></iframe>
 
-          <div className="my-4">
-            <p className="text-xl font-bold">{details.details.snippet.title}</p>
-          </div>
+          <TitleContainer />
+
+          <CommentContainer />
         </div>
-        <div className="p-5 w-[35%]">
+        <div className="p-1 w-[35%] video-card">
           {YT_VIDEOS?.map((data) => {
             return <RelatedVideoCard key={data.id} videos={data} />;
           })}

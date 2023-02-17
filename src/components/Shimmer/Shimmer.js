@@ -3,12 +3,12 @@ import { ShimmerThumbnail } from "react-shimmer-effects";
 export const Shimmer = () => {
   return (
     <>
-      {Array(8)
+      {Array(5)
         .fill("")
         .map((card, ind) => {
           return (
             <>
-              <ShimmerThumbnail key={ind} height={350} width={300} rounded />
+              <ShimmerThumbnail key={ind} height={150} width={300} rounded />
             </>
           );
         })}

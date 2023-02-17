@@ -79,7 +79,7 @@ function Sidebar() {
     <>
       {/* <div className="w-full md:w-2/12 shadow-lg h-screen overflow-hidden"> */}
       <div
-        className={`overflow-y-auto h-full py-4 bg-white absolute md:relative z-10  md:translate-x-0 transition-all ${
+        className={`overflow-y-auto h-full py-4 bg-white absolute shadow-xl md:relative z-10  md:translate-x-0 transition-all ${
           !toggleState
             ? "md:block w-[50px] hidden"
             : "md:block w-[240px] translate-x-[0px]"
