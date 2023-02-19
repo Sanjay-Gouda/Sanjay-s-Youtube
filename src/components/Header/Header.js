@@ -6,6 +6,7 @@ import { setToggleSidebar } from "../../utils/sidebarSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../../constants/Constant";
 import { setSearchCache } from "../../utils/searchSlice";
+import { LoginModal } from "../Modal/loginModal";
 
 function Header() {
   const [showSuggestionbar, setShowSuggestionBar] = useState(false);
@@ -116,7 +117,7 @@ function Header() {
         </div>
       </div>
 
-      <div className="flex col-span-2"></div>
+      <div className="flex col-span-2">{/* <LoginModal /> */}</div>
     </div>
   );
 }
